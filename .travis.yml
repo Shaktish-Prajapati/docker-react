@@ -11,3 +11,31 @@ before_install:
 # need to have all the different commands that need to execute the test suit
 script:
   - docker run -e CI=true shaktishprajapati/docker-react npm run test
+
+# DEPLYMENT ON AWS ELASTICBEANSTALK OR ANYOTHER
+# access_key_id: $AWS_ACCESS_KEY
+# secret_access_key: $AWS_SECRET_KEY
+
+deploy:
+  # travis atomatically comes with some provider settings
+  # Keep qoutes same as pre-given
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "docker"
+  # environmen_name_mentioned_on_dashboard_of_elasticbeanstalk_just_after_the_name_application
+  env: "Docker-env"
+  # "TRAVIS CI TEST THE CODE AND IF IT PASS THEN IT WILL PUT THAT CODE IN THE BUCKET ON THE AWS CLOUD WHICH IS 'S3', 
+  # HERE WE HAVE TO PUT THE NAME OF THE BUCKET, WE WILL GET IT FROM BY GOING TO DAH BOARD AND SEARCH FOR S3 ,
+  # WILL GET THE NAME AND BE CAREFUL WHILE SELECTING THE NAME OF YOUR BUCKET. AFTER PUTTING THE FILE IN BUCKET,
+  #  TRAVIS CI WILL PING THE ELASTIC BEANSTALK AND SAY THAT I HAVE PUT THE CODE IN THIS BUCKET JUST GO THERE AND GET IT "
+  bucket_name: "elasticbeanstalk-ap-south-1-720169152709"
+  # BUCKET_PATH WILL BE AVAILABLE IN THE S3 BUCKET FOLDER, IF U R CREATING IT FIRST TIME, THEN JUST KEEP IT AS "APP_NAME" IT WILL BE AUTOMATICALLY CREATED BY THE S3
+  bucket_path: "docker"
+  on:
+    # here we are decideing when to run deployment, here in this case, will deploy when we receive any pull request and acept it or push some code to the master_branch
+    branch: master
+  # $AWS_ACCESS_KEY and $AWS_SECRET_KEY IS DIRECTLY TAKEN FROM TRAVIS CI, WHICH IS SET IN MORE SETTING OF TRAVIS CI
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+  
