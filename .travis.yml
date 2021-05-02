@@ -37,5 +37,5 @@ deploy:
   # $AWS_ACCESS_KEY and $AWS_SECRET_KEY IS DIRECTLY TAKEN FROM TRAVIS CI, WHICH IS SET IN MORE SETTING OF TRAVIS CI
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
-    secure: $AWS_SECRET_KEY
+    secure: "$AWS_SECRET_KEY"
   
