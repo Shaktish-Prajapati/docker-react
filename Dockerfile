@@ -11,6 +11,8 @@ RUN npm run build
 
 # RUN PHASE
 FROM nginx
+# EXPOSING FOR ELASTICBEANSTALK, bcz it see EXPOSE port and map it with the elastic bean stalk port automatically, PORT 80 is default port for the nginx
+EXPOSE 80
 # here we are wrinting 0, bcz we have unnabed builder above, else we will put our 'builder name'
 # COPY --from='builder_name' BUILD_FILE_DIRECTORY_ADD HTML_FILE_ADD :: for static website
 COPY --from=0 /app/build /usr/share/nginx/html
