@@ -1,0 +1,13 @@
+# super user permission required
+sudo: required
+
+services:
+  - docker
+
+# it execute before test get run
+before_install:
+  - docker build -t shaktishprajapati/docker-react -f Dockerfile.dev .
+
+# need to have all the different commands that need to execute the test suit
+script:
+  - docker run -e CI=true shaktishprajapati/docker-react npm run test
