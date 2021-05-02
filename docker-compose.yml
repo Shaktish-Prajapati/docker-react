@@ -1,0 +1,27 @@
+version: '3'
+services: 
+    web:
+        build: 
+            # for development setup
+            # where to search for all the files
+            context: .
+            # which docker need to look up
+            dockerfile: Dockerfile.dev
+        ports: 
+            - "3000:3000"
+        volumes: 
+            - /app/node_modules
+            - .:/app
+        stdin_open: true
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+    
+    # CREATING SECOND SERVICE FOR TEST
+    test:
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes: 
+            - /app/node_modules
+            - .:/app
+        command: ["npm","run","test"]
