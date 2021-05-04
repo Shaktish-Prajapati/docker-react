@@ -6,7 +6,8 @@ services:
             # where to search for all the files
             context: .
             # which docker need to look up
-            dockerfile: Dockerfile.dev
+            # dockerfile: Dockerfile.dev
+            dockerfile: Dockerfile
         ports: 
             - "3000:3000"
         volumes: 
