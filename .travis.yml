@@ -10,7 +10,7 @@ before_install:
 
 # need to have all the different commands that need to execute the test suit
 script:
-  - docker run -e CI=true shaktishprajapati/docker-react npm run test
+  - docker run -e CI=true shaktishprajapati/docker-react npm run test -- --coverage
 
 # DEPLYMENT ON AWS ELASTICBEANSTALK OR ANYOTHER
 # access_key_id: $AWS_ACCESS_KEY
