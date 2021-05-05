@@ -2,9 +2,9 @@
 FROM node:alpine
 # we can tag by using "as 'name_for_tag' ", above we are creating unnamed builder
 WORKDIR /app
-COPY package.json .
+COPY ./package.json ./
 RUN npm install
-COPY . .
+COPY ./ ./
 RUN npm run build
 
 # Now the required "build" file will be store in "/app/build" of container
