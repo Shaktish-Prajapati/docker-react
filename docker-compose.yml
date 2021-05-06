@@ -4,10 +4,10 @@ services:
         build: 
             # for development setup
             # where to search for all the files
-            context: ./
+            context: .
             # which docker need to look up
-            # dockerfile: Dockerfile.dev
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.dev
+            # dockerfile: Dockerfile
         ports: 
             - "3000:3000"
         volumes: 
@@ -18,10 +18,10 @@ services:
             - CHOKIDAR_USEPOLLING=true
     
     # CREATING SECOND SERVICE FOR TEST
-    test:
+    tests:
         build:
             context: .
-            dockerfile: Dockerfile
+            dockerfile: Dockerfile.dev
         volumes: 
             - /app/node_modules
             - .:/app
