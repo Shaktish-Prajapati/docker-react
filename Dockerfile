@@ -1,8 +1,8 @@
 # BUILD PHASE
 FROM node:alpine
 # we can tag by using "as 'name_for_tag' ", above we are creating unnamed builder
-WORKDIR /app
-COPY ./package.json ./
+WORKDIR '/app'
+COPY package*.json ./
 RUN npm install
 COPY ./ ./
 RUN npm run build
