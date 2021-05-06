@@ -18,6 +18,7 @@ function App() {
           Learn React
         </a>
         <p>Added the feature branch!!</p>
+        <p>Now React app is deployed on AWS!!</p>
       </header>
     </div>
   );
